@@ -176,3 +176,115 @@ import Foundation
 //
 //challenge5("The rain in Spain", "n")
 //    
+
+/*
+ Challenge 6: Remove duplicate
+ letters from a string
+ Difficulty: Easy
+ Write a function that accepts a string as its input, and returns the same string just with
+ duplicate letters removed.
+ Tip: If you can solve this challenge without a for-in loop, you can consider it “tricky” rather
+ than “easy”.
+ Sample input and output
+ • The string “wombat” should print “wombat”.
+ • The string “hello” should print “helo”.
+ • The string “Mississippi” should print “Misp”.
+ */
+
+//func challenge6(_ inputString: String) -> String {
+//    
+//    var arr: [Character] = Array()
+//    
+//    
+//    for i in inputString {
+//        if arr.contains(i) {
+//            continue
+//        } else {
+//            arr.append(i)
+//        }
+//    }
+//
+//    return String(arr)
+//}
+
+
+//func challenge6(_ inputString: String) -> String {
+//    var seen = Set<Character>()
+//    
+//    let result = inputString.filter {
+//        if seen.contains($0) {
+//            return false
+//        } else {
+//            seen.insert($0)
+//            return true
+//        }
+//    }
+//
+//    return String(result)
+//}
+//
+//challenge6("Mississippi")
+
+
+/*
+ Challenge 7: Condense
+ whitespace
+ Difficulty: Easy
+ Write a function that returns a string with any consecutive spaces replaced with a single space.
+ Sample input and output
+ I’ve marked spaces using “[space]” below for visual purposes:
+ • The string “a[space][space][space]b[space][space][space]c” should return
+ “a[space]b[space]c”.
+ • The string “[space][space][space][space]a” should return “[space]a”.
+ • The string “abc” should return “abc”.
+ */
+
+//
+//func challenge7(_ inputString: String) -> String {
+//    
+//    var result: String = ""
+//    var spaceSeen: Bool = false
+//    
+//    for item in inputString {
+//        if item == " " && spaceSeen {
+//            continue
+//        }else if item == " " {
+//            spaceSeen = true
+//        } else {
+//            spaceSeen = false
+//        }
+//        
+//        result.append(item)
+//    }
+//    
+//    print(result)
+//    return result
+//}
+//
+//challenge7("     a   b   c    ")
+
+/*
+Challenge 8: String is rotated
+Difficulty: Tricky
+Write a function that accepts two strings, and returns true if one string is rotation of the other,
+taking letter case into account.
+Tip: A string rotation is when you take a string, remove some letters from its end, then append
+them to the front. For example, “swift” rotated by two characters would be “ftswi”.
+Sample input and output
+• The string “abcde” and “eabcd” should return true.
+• The string “abcde” and “cdeab” should return true.
+• The string “abcde” and “abced” should return false; this is not a string rotation.
+*/
+
+//this is mirrored
+//func challenge8(_ string1: String, _ string2: String) -> Bool {
+//    return string1.reduce(""){ String($1) + $0} == string2
+//}
+
+
+func challenge8(_ string1: String, _ string2: String) -> Bool {
+    
+    return (string1+string1).contains(string2) && string1.count == string2.count
+}
+
+challenge8("abc", "a")
