@@ -461,7 +461,7 @@ challenge11("clamp", "maple")
  • The string “aaAAaa” should return “a2A2a2”
  */
 
-func runLengthEncode(_ input: String) -> String {
+func challenge13(_ input: String) -> String {
     var result = ""
     var currentChar: Character?
     var count = 0
