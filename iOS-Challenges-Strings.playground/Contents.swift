@@ -335,3 +335,158 @@ Tip: Vowels are the letters, A, E, I, O, and U; consonants are the letters B, C,
 //}
 ////
 //challenge10("Mississippi")
+
+
+/*
+ Challenge 11: Three different
+ letters
+ Difficulty: Tricky
+ Write a function that accepts two strings, and returns true if they are identical in length but
+ have no more than three different letters, taking case and string order into account.
+ Sample input and output
+ • The strings “Clamp” and “Cramp” would return true, because there is one letter difference.
+ • The strings “Clamp” and “Crams” would return true, because there are two letter
+ differences.
+ • The strings “Clamp” and “Grams” would return true, because there are three letter
+ differences.
+ • The strings “Clamp” and “Grans” would return false, because there are four letter
+ differences.
+ • The strings “Clamp” and “Clam” would return false, because they are different lengths.
+ • The strings “clamp” and “maple” should return false. Although they differ by only one
+ letter, the letters that match are in different positions.
+ 
+ */
+
+//func challenge11(_ str1: String, _ str2: String) -> Bool {
+//    if str1.count != str2.count {
+//        return false
+//    }
+//    
+//    var arr1 = Array(str1)
+//    var arr2 = Array(str2)
+//    
+//    var count = 0
+//    
+//    for (index, char) in str1.enumerated() {
+//        if arr1[index] != arr2[index] {
+//            count += 1
+//            if count > 3 {
+//                return false
+//            }
+//        }
+//        
+//    }
+//    
+//    return true
+//}
+
+func challenge11(_ string1: String, _ string2: String) -> Bool {
+    guard string1.count == string2.count else { return false }
+    
+    let differences = zip(string1, string2).filter { $0 != $1 }.count
+    return differences <= 3
+}
+
+challenge11("Clamp", "Cramp")
+challenge11("Clamp", "Crams")
+challenge11("Clamp", "Grams")
+challenge11("Clamp", "Grans")
+challenge11("Clamp", "Clam")
+challenge11("clamp", "maple")
+
+
+/*
+ Challenge 12: Find longest prefix
+ Difficulty: Tricky
+ Write a function that accepts a string of words with a similar prefix, separated by spaces, and returns the longest substring that prefixes all words.
+ Sample input and output
+ • The string “swift switch swill swim” should return “swi”.
+ • The string “flip flap flop” should return “fl”.
+ */
+
+//
+//func challenge12(_ input: String) -> String {
+//    let words = input.components(separatedBy: " ")
+//    guard let firstWord = words.first else { return "" }
+//    
+//    var prefix = firstWord
+//    
+//    for word in words {
+//        while !word.hasPrefix(prefix) && !prefix.isEmpty {
+//            prefix.removeLast()
+//        }
+//    }
+//    return prefix
+//}
+//
+//func challenge12(input: String) -> String {
+//    let parts = input.components(separatedBy: " ")
+//    guard let first = parts.first else { return "" }
+//    
+//    var currentPrefix = ""
+//    var bestPrefix = ""
+//    
+//    for letter in first {
+//        currentPrefix.append(letter) // sw
+//        
+//        for word in parts {
+//            if !word.hasPrefix(currentPrefix) {
+//                return bestPrefix
+//            }
+//        }
+//        
+//        bestPrefix = currentPrefix // sw
+//    }
+//    
+//    return bestPrefix
+//}
+
+
+//
+//challenge12("swift switch swill swim")
+////challenge12( "flip flap flop")
+
+
+/*
+ Challenge 13: Run-length
+ encoding
+ Difficulty: Taxing
+ Write a function that accepts a string as input, then returns how often each letter is repeated in
+ a single run, taking case into account.
+ Tip: This approach is used in a simple lossless compression technique called run-length
+ encoding.
+ Sample input and output
+ • The string “aabbcc” should return “a2b2c2”.
+ • The strings “aaabaaabaaa” should return “a3b1a3b1a3”
+ • The string “aaAAaa” should return “a2A2a2”
+ */
+
+func runLengthEncode(_ input: String) -> String {
+    var result = ""
+    var currentChar: Character?
+    var count = 0
+
+    for char in input {
+        if char == currentChar {
+            count += 1
+        } else {
+            // for the first cycle when curentChar is empty
+            if let currentChar = currentChar {
+                result += "\(currentChar)\(count)"
+            }
+            currentChar = char
+            count = 1
+        }
+    }
+    // Append the last run
+    if let currentChar = currentChar {
+        result += "\(currentChar)\(count)"
+    }
+
+    return result
+}
+
+
+challenge13( "aabbcc")
+//challenge13( "aaabaaabaaa")
+//challenge13( "aaAAaa")
