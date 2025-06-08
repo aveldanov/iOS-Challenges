@@ -282,9 +282,56 @@ Sample input and output
 //}
 
 
-func challenge8(_ string1: String, _ string2: String) -> Bool {
-    
-    return (string1+string1).contains(string2) && string1.count == string2.count
-}
+//func challenge8(_ string1: String, _ string2: String) -> Bool {
+//    
+//    return (string1+string1).contains(string2) && string1.count == string2.count
+//}
+//
+//challenge8("abc", "a")
 
-challenge8("abc", "a")
+
+
+/*
+ 
+ Challenge 9: Find pangrams
+ Difficulty: Tricky
+ Write a function that returns true if it is given a string that is an English pangram, ignoring letter case.
+ Tip: A pangram is a string that contains every letter of the alphabet at least once.
+ */
+
+
+//func challenge9(_ input: String) -> Bool {
+//    let set = Set(input.lowercased())
+//    let letters = set.filter { $0 >= "a" && $0 <= "z" }
+//    return letters.count == 26
+//}
+
+//func challenge9(_ input: String) -> Bool {
+//    Set(input.lowercased().filter { $0.isLetter }).count == 26
+//}
+//
+//
+//
+////challenge9("The quick brown fox jumps over the lazy dog")
+//challenge9("The quick brown fox jumped over the lazy dog")
+
+/*
+Challenge 10: Vowels and
+consonants
+Difficulty: Tricky
+Given a string in English, return a tuple containing the number of vowels and consonants.
+Tip: Vowels are the letters, A, E, I, O, and U; consonants are the letters B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Y, Z.
+*/
+
+
+//func challenge10(_ input: String) -> (vowels: Int, consonants: Int) {
+//    let vowels = Set("aeiou")
+//    let letters = input.lowercased().filter { $0.isLetter }
+//    
+//    let vowelCount = letters.filter { vowels.contains($0) }.count
+//    let consonantCount = letters.count - vowelCount
+//    
+//    return (vowelCount, consonantCount)
+//}
+////
+//challenge10("Mississippi")
